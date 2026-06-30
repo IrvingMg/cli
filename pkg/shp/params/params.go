@@ -10,8 +10,8 @@ import (
 	"k8s.io/apimachinery/pkg/runtime/serializer"
 	"k8s.io/apimachinery/pkg/types"
 	"k8s.io/cli-runtime/pkg/genericclioptions"
-	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/dynamic"
+	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
 	"k8s.io/kubectl/pkg/scheme"
 
@@ -26,6 +26,7 @@ var hiddenKubeFlags = []string{
 	"as",
 	"as-uid",
 	"as-group",
+	"as-user-extra",
 	"cache-dir",
 	"certificate-authority",
 	"client-certificate",
@@ -46,8 +47,8 @@ type Params struct {
 	clientset      kubernetes.Interface     // kubernetes api-client, global instance
 	buildClientset buildclientset.Interface // shipwright api-client, global instance
 	dynamicClient  dynamic.Interface
-	pw             *reactor.PodWatcher      // pod-watcher global instance
-	follower       *follower.Follower       // follower global instance
+	pw             *reactor.PodWatcher // pod-watcher global instance
+	follower       *follower.Follower  // follower global instance
 
 	configFlags *genericclioptions.ConfigFlags
 	namespace   string
